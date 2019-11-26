@@ -1,0 +1,13 @@
+version: '3'
+services:
+  graphql-sample-db:
+    image: postgres:12
+    ports:
+      - "25432:5432"
+    volumes:
+      - ./env/docker/postgres/:/docker-entrypoint-initdb.d
+    container_name: graphql-sample-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      TZ: Asia/Tokyo

@@ -1,0 +1,14 @@
+spring:
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  application:
+    name: graphql-sample
+  datasource:
+    url: jdbc:postgresql://localhost:25432/sample
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+  flyway:
+    enabled: false
+    locations: classpath:/db/migration,/db/data/migration
