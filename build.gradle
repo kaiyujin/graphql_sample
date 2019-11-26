@@ -15,6 +15,7 @@ ext {
 	set('sourceCompatibility', '1.8')
 	set('domaVersion', '2.24.0')
 	set('springfoxVersion', '2.9.2')
+	set('graphqlSpringVersion', '5.10.0')
 }
 
 //
@@ -29,7 +30,7 @@ repositories {
 // Application Foundation dependencies and settings.
 //
 dependencies {
-	implementation "org.seasar.doma.boot:doma-spring-boot-starter:1.1.1"
+	implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.1.1'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
@@ -62,10 +63,14 @@ dependencies {
 	implementation 'org.flywaydb:flyway-core'
 }
 
-kapt {
-	arguments {
-		arg("doma.resources.dir", compileKotlin.destinationDir)
-	}
+
+// GraphQL
+dependencies {
+	graphqlSpringVersion
+	implementation "com.graphql-java-kickstart:graphql-spring-boot-starter:${graphqlSpringVersion}"
+	implementation "com.graphql-java-kickstart:graphiql-spring-boot-starter:${graphqlSpringVersion}"
+	implementation "com.graphql-java-kickstart:altair-spring-boot-starter:${graphqlSpringVersion}"
+	implementation "com.graphql-java-kickstart:graphql-java-tools:5.6.1"
 }
 
 task copyDomaResources(type: Sync)  {
